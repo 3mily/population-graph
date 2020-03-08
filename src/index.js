@@ -1,12 +1,30 @@
+// Modules
 import React from 'react';
 import ReactDOM from 'react-dom';
+import thunk from "redux-thunk";
+import { Provider } from "react-redux";
+
+// Redux
+import reducers from "./redux/reducers";
+
+// App root
+import AppRoot from './AppRoot';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Setup Redux Dev Tools
+const devTools = process.env.NODE_ENV === "development"
+  && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
+  : x => x;
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// Create App
+const App = (
+  <Provider store={store}>
+    <AppRoot />
+  </Provider>
+);
+
+ReactDOM.render(
+  App,
+  document.getElementById("root")
+);
