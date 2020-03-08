@@ -10,7 +10,7 @@ import reducers from "./redux/reducers";
 import { getPrefectures } from './redux/actions/prefecture.action';
 
 // App root
-import AppRoot from './AppRoot';
+import AppRoot from './components/root/AppRoot';
 import './index.css';
 
 // Setup Redux Dev Tools
