@@ -1,0 +1,5 @@
+@import "../../../variables.scss";
+
+.population-graph-label {
+  @extend %section-label;
+}

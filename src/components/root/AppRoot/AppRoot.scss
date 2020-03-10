@@ -1,0 +1,29 @@
+@import "../../../variables.scss";
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: column;
+  margin: 12px 0;
+}
+.content {
+  margin: 24px 0;
+  max-width: 90vw;
+}
+.graph {
+  padding: 24px;
+  border-radius: 10px;
+  background-color: $primary-background-color;
+  text-align: center;
+}
+header {
+  display: flex;
+  font-size: $font-size-title;
+  font-weight: 700;
+  margin: 0 auto;
+  padding-bottom: 24px;
+  width: 100%;
+  text-align: left;
+}
+section {
+  padding-bottom: 24px;
+}

@@ -1,12 +1,12 @@
 // Modules
 import React from "react";
 
+// Styling
+import './Checkbox.scss';
+
 const Checkbox = ({label, value, checked, onChange, ...props}) => {
   return (
-    <div>
-      <label htmlFor={value}>
-        {label}
-      </label>
+    <div className="checkbox-wrapper">
       <input
         type="checkbox"
         id={value}
@@ -16,8 +16,10 @@ const Checkbox = ({label, value, checked, onChange, ...props}) => {
         onChange={onChange}
         {...props}
       />
+      <label htmlFor={value} className="checkbox-label">
+        {label}
+      </label>
     </div>
   );
 }
-
 export default Checkbox;

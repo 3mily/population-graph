@@ -1,0 +1,9 @@
+@import "./variables.scss";
+
+html, body, #root {
+  margin: 0 auto;
+  height: 100%;
+  font-family: $font-family;
+  color: $primary-text-color;
+  background-color: $secondary-background-color;
+}

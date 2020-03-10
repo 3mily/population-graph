@@ -11,7 +11,7 @@ import { getPrefectures } from './redux/actions/prefecture.action';
 
 // App root
 import AppRoot from './components/root/AppRoot';
-import './index.css';
+import './index.scss';
 
 // Setup Redux Dev Tools
 const devTools = process.env.NODE_ENV === "development"

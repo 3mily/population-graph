@@ -1,0 +1,16 @@
+@import "../../../variables.scss";
+
+.error-bar {
+  background-color: $error-background-color;
+  color: $error-text-color;
+  padding: 10px 0;
+  text-align: center;
+}
+.prefecture-selector-label {
+  @extend %section-label;
+}
+.prefecture-selector-items {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px auto;
+}

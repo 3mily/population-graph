@@ -1,19 +1,17 @@
 // Modules
-import React, { Component } from 'react';
-import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from 'recharts';
-
-import { connect } from "react-redux";
+import React from 'react';
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import stringToColor from "../../../utils/stringToColor.util";
-
+import './PopulationGraph.scss';
 export const PopulationGraph = ({selected, populations, prefectures}) => {
   const minYear = 1960; // TODO: Don't hardcode year values. Instead, it should use
   const maxYear = 2045; //       first & last year values from population response
   const tickCount = (Math.ceil(maxYear - minYear) / 5) + 1; // Show value for every 5 years
-
   return (
-    <div>
-      <div>総人口グラフ</div>
-      <LineChart width={600} height={400}>
+    <div class="population-graph">
+      <div class="population-graph-label">総人口グラフ</div>
+      <ResponsiveContainer width="100%" height={400}>
+      <LineChart margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
         <XAxis
           dataKey="year"
           type="number"
@@ -42,8 +40,8 @@ export const PopulationGraph = ({selected, populations, prefectures}) => {
         <Tooltip />
         <Legend />
       </LineChart>
+      </ResponsiveContainer>
     </div>
   );
 }
-
 export default PopulationGraph;

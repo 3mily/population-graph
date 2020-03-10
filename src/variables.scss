@@ -1,0 +1,29 @@
+$font-family: Quicksand,Arial,sans-serif;
+
+$font-size-title: 30px;
+$font-size-label: 22px;
+$font-size-text: 14px;
+
+$white: #FFFFFF;
+$gray-100: #ECEFF1;
+$gray-500: #263238;
+$black: #373f5d;
+$red-100: #FFDACA;
+$red-500: #B50000;
+$blue: #5167f5;
+
+$primary-background-color: $white;
+$primary-text-color: $black;
+$secondary-text-color: $gray-500;
+$secondary-background-color: $gray-100;
+$error-background-color: $red-100;
+$error-text-color: $red-500;
+$accent-color: $blue;
+
+%section-label {
+  display: flex;
+  font-size: $font-size-label;
+  font-weight: 700;
+  margin: 24px auto;
+  padding-bottom: 5px;
+}
