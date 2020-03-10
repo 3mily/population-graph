@@ -6,7 +6,7 @@ import { includes } from "lodash";
 import Checkbox from "../../base/Checkbox";
 
 export const PrefectureSelector = ({
-  error,
+  errors,
   isLoading,
   selected,
   setSelected,
@@ -17,6 +17,17 @@ export const PrefectureSelector = ({
 }) => {
   return (
     <div>
+      {
+        errors.map((errorString) => {
+          return (
+            <div
+              key={errorString}
+            >
+              Error: {errorString}
+            </div>
+          );
+        })
+      }
       {
         Object.keys(prefectures).map((code) => {
           const prefecture = prefectures[code];

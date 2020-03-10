@@ -9,7 +9,10 @@ const mapStateToProps = (state) => ({
   prefectures: state.prefecture.data,
   population: state.population.data,
   isLoading: state.prefecture.loading,
-  error: state.prefecture.error
+  errors: [
+    (state.prefecture.error && `prefecture - ${state.prefecture.error}`),
+    (state.population.error && `population - ${state.population.error}`),
+  ].filter((er) => { return !!er }),
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -19,6 +22,8 @@ const mapDispatchToProps = (dispatch) => ({
 const mergeProps = (stateProps, dispatchProps, ownProps) => ({
   prefectures: stateProps.prefectures,
   selected: ownProps.selected,
+  isLoading: stateProps.isLoading,
+  errors: stateProps.errors,
   onChange: event => {
     const prefCode = event.target.value;
     if (!stateProps.population[prefCode]) {
