@@ -1,6 +1,6 @@
 // Modules
 import React from "react";
-import { includes, without, concat } from "lodash";
+import { includes } from "lodash";
 
 // Base Components
 import Checkbox from "../../base/Checkbox";
@@ -13,24 +13,8 @@ export const PrefectureSelector = ({
   population,
   prefectures,
   getPopulationForPrefectureCode,
+  onChange,
 }) => {
-
-  const onChange = event => {
-    const prefCode = event.target.value;
-
-    if (!population[prefCode]) {
-      // Only get data if it hasn't already been requested & stored
-      getPopulationForPrefectureCode(prefCode)
-    }
-
-    // Update selected array
-    const newSelected = includes(selected, prefCode)
-      ? without(selected, prefCode)
-      : concat(selected, prefCode);
-
-    setSelected(newSelected);
-  }
-
   return (
     <div>
       {
