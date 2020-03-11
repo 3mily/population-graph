@@ -1,68 +1,71 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Prefecture Population Graph of Japan
+========
 
-## Available Scripts
+A simple [React](https://reactjs.org/) + [Redux](https://redux.js.org/) SPA that shows a graph of annual changes to populations in Japan per selected Prefecture.
+Data comes from the [OpenData RESAS API](https://opendata.resas-portal.go.jp/); graph rendering done using [Recharts](http://recharts.org/).
 
-In the project directory, you can run:
 
-### `npm start`
+Table of Contents
+-----------------
+1. [Requirements](#requirements)
+1. [To run locally](#to-run-locally)
+1. [Testing](#testing)
+1. [Structure](#structure)
+1. [Some final thoughts](#Some-final-thoughts)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Requirements
+------------
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Node `^v12.11.1` recommended.
 
-### `npm test`
+To run locally
+---------------
+```
+$ git clone git@github.com:3mily/population-graph.git
+$ cd population-graph
+$ npm install
+$ npm start
+```
+You will need to generate a [RESAS API key](https://opendata.resas-portal.go.jp/form.html).
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Once you have a key, copy the defaults in `env.example`, and add it to your `.env`.
+```
+$ cp env.example .env
+```
 
-### `npm run build`
+Testing
+-----
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* `npm run test` - Runs tests using Jest (Todo: write unit tests!)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Structure
+---------
 
-### `npm run eject`
+```
+.
+├── src                   # Application source code
+│   ├── components        # React Components
+│   │   ├── base          # Sub-view React Components
+│   │   ├── partial       # Sub-view React Components
+│   │   └── root          # Root view React Components
+│   ├── redux             #
+│   │   ├── actions       # Redux action creators. API requests are defined here.
+│   │   └── reducers      # Redux reducers for updating app state
+│   ├── utils             # Utility/helper functions
+│   ├── index.scss        # Defines fonts and basic root styles
+│   ├── variables.scss    # Defines color, font-size
+│   └── index.js          # Application rendering
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Some final thoughts
+---------
+- For state management, initial consideration was to use React Context API. End decision was to use Redux, which felt better suited for this kind of app that calls upon multiple API endpoints (and potential do more in the future).
+  * The thinking behind this is further described [here](https://github.com/3mily/population-graph/commit/4fa3871a7237ac84e08e2abb6a9d6607e048bfd1)
+- To cut down on unnecessary requests, selecting a prefecture will only request data if it hasn't previously been requested. One idea for further improving this would be to store data in localStorage - so that data persists even after app-reload. (Although, we may still need to request the data in case it has changed, but even then we can at least render old data to start with so it appears to load faster.)
+- Focused checkboxes don't currently get checked on enter press; it would be nice to change that.
+- The main thing missing from this app right now is test coverage. Should add tests for components, action creators, and reducers.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+---------
+Thank you for reading! 🍙
