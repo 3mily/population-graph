@@ -4,6 +4,7 @@ Prefecture Population Graph of Japan
 A simple [React](https://reactjs.org/) + [Redux](https://redux.js.org/) SPA that shows a graph of annual changes to populations in Japan per selected Prefecture.
 Data comes from the [OpenData RESAS API](https://opendata.resas-portal.go.jp/); graph rendering done using [Recharts](http://recharts.org/).
 
+[View it live on Heroku!](https://population-graph.herokuapp.com/) 👈
 
 Table of Contents
 -----------------
