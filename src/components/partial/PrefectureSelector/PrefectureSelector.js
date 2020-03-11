@@ -4,6 +4,7 @@ import { includes } from "lodash";
 
 // Base Components
 import Checkbox from "../../base/Checkbox";
+import LoadingSpinner from "../../base/LoadingSpinner";
 
 // Styling
 import './PrefectureSelector.scss';
@@ -33,6 +34,11 @@ export const PrefectureSelector = ({
         })
       }
       <div className="prefecture-selector-label">都道府県</div>
+      { isLoading ?
+        <LoadingSpinner />
+        :
+        null
+      }
       <div className="prefecture-selector-items">
         {
           Object.keys(prefectures).map((code) => {

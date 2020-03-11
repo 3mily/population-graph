@@ -1,0 +1,18 @@
+@import "../../../variables.scss";
+
+.loading-spinner {
+  pointer-events: none;
+  width: 30px;
+  height: 30px;
+  border: 3px solid transparent;
+  border-color: $gray-100;
+  border-top-color: $accent-color;
+  border-radius: 50%;
+  animation: loadingspin 1s linear infinite;
+}
+
+@keyframes loadingspin {
+  100% {
+      transform: rotate(360deg)
+  }
+}

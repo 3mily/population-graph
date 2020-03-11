@@ -2,14 +2,24 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import stringToColor from "../../../utils/stringToColor.util";
+import LoadingSpinner from "../../base/LoadingSpinner";
 import './PopulationGraph.scss';
-export const PopulationGraph = ({selected, populations, prefectures}) => {
+
+export const PopulationGraph = ({
+  selected,
+  populations,
+  prefectures,
+  isLoading,
+}) => {
   const minYear = 1960; // TODO: Don't hardcode year values. Instead, it should use
   const maxYear = 2045; //       first & last year values from population response
   const tickCount = (Math.ceil(maxYear - minYear) / 5) + 1; // Show value for every 5 years
   return (
-    <div class="population-graph">
-      <div class="population-graph-label">総人口グラフ</div>
+    <div className="population-graph">
+      <div className="population-graph-label">
+        総人口グラフ
+       { isLoading ? <LoadingSpinner size={15} /> : null }
+      </div>
       <ResponsiveContainer width="100%" height={400}>
       <LineChart margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
         <XAxis
